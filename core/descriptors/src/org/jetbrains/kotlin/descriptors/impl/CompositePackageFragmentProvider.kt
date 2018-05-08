@@ -26,7 +26,7 @@ class CompositePackageFragmentProvider(// can be modified from outside
         private val providers: List<PackageFragmentProvider>) : PackageFragmentProvider {
 
     override fun getPackageFragments(fqName: FqName): List<PackageFragmentDescriptor> {
-        val result = ArrayList<PackageFragmentDescriptor>()
+        val result = HashSet<PackageFragmentDescriptor>()
         for (provider in providers) {
             result.addAll(provider.getPackageFragments(fqName))
         }
